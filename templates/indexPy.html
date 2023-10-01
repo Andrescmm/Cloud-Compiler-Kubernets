@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejecución de Python</title>
+    <script>
+        function handleTab(event) {
+            if (event.key === 'Tab') {
+                event.preventDefault();
+                const textarea = event.target;
+                const start = textarea.selectionStart;
+                const end = textarea.selectionEnd;
+                const text = textarea.value;
+                textarea.value = text.substring(0, start) + '\t' + text.substring(end);
+                textarea.selectionStart = textarea.selectionEnd = start + 1;
+            }
+        }
+
+        function clearCodeAndSubmit() {
+            localStorage.removeItem('pythonCode'); // Borra el código almacenado
+            const textarea = document.querySelector('textarea[name="code.py"]');
+            textarea.value = ''; // Limpia el cuadro de entrada
+            const form = textarea.closest('form');
+            form.submit(); // Envía el formulario
+        }
+        function executeCode() {
+            const textarea = document.querySelector('textarea[name="code.py"]');
+            const code = textarea.value;
+            const form = textarea.closest('form');
+            form.submit(); // Envía el formulario
+        }
+    </script>
+</head>
+<body style="background-color: #145cb8;">
+    <div class="toggle-button" style="text-align: right; padding-right: 20px; margin-top: 20px; ">
+        <a href="/cpp" style="background-color: white; border-color: #ffd400; width: 50%; height: 50%; border-radius: 30px; font-size: 14px; margin-right: 15px; padding: 10px;">C++</a>
+        <a href="/python" style="background-color: white; border-color: #ffd400; width: 50%; height: 50%; border-radius: 30px; font-size: 14px; padding: 10px;">Python</a>
+    </div>
+    
+    <img src="/static/logoPy.png" width="15%" height="15%" alt="logoPy.png" style="margin-left: 45%;"/><br><br>
+
+    <input type="submit" style="background-color: #ffd400; border-color: #ffd400; width: 15%; height: 15%; border-radius: 30px; margin-left: 17%; font-size: 100%;" value="Ejecutar" onclick="executeCode()">
+    <button type="button" style="background-color: #091757; border-color: #091757; color: white; border-radius: 30px; margin-left: 35%; width: 15%; height: 15%; font-size: 100%;" onclick="clearCodeAndSubmit()">Borrar</button>
+    <br>
+    <br>
+
+    <div style="display: flex;">
+        <form method="POST">
+            <textarea name="code.py" rows="10" cols="50" onkeydown="handleTab(event)" style="background-color: #fbf6f3; width: 175%; height: 90%; border-color: grey; border-style: outset; border-width: 3px; margin-left: 10%; border-radius: 10px; padding: 20px 20px 20px 20px;">{{ code }}</textarea>   
+        </form> 
+
+        <div style="background-color: black; width: 800px; height: 400px; margin-left: 30%; border-radius: 10px; margin-right: 3%;">
+            <h2 style="color: red; font-size: 100%; margin-left: 44%;">   --  return    --</h2>
+            <pre style="color: wheat; font-size: 100%; padding: 20px 20px 20px 20px;">{{ result }}</pre>
+        </div> 
+    </div>
+</body>
+</html>
