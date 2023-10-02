@@ -59,4 +59,7 @@ kubectl delete deployment --namespace=default --all
 kubectl scale deployment cloud-compiler-parcial --replicas=0
 kubectl delete pod cloud-compiler-parcial-dcc6f77f9-k2tsx
 ```
-
+Stop the cluster
+```bash
+minikube stop
+```
