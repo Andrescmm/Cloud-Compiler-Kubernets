@@ -61,5 +61,5 @@ kubectl delete pod cloud-compiler-parcial-dcc6f77f9-k2tsx
 ```
 Stop the cluster
 ```bash
-minikube stop
+minikube stop --all
 ```
