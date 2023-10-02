@@ -21,13 +21,13 @@ docker push andrescmm/cloud-compiler-parcial
 
 ```bash
 kubectl apply -f deployment.yml
+kubectl scale deployment cloud-compiler-parcial --replicas=1
 kubectl get deployments
 kubectl get services
 
 kubectl get pods --all-namespaces
 kubectl delete deployment --namespace=default --all
 kubectl scale deployment cloud-compiler-parcial --replicas=0
-kubectl scale deployment cloud-compiler-parcial --replicas=1
 ```
 ```bash
 kubectl get services --all-namespaces
