@@ -27,7 +27,9 @@ kubectl apply -f deployment.yml
 kubectl get deployments
 kubectl get services
 
-Utiliza el siguiente comando para obtener información sobre los servicios y los puertos asignados:
+kubectl get pods --all-namespaces
+kubectl scale deployment cloud-compiler-parcial --replicas=0
+kubectl scale deployment cloud-compiler-parcial --replicas=1
 
 bash
 kubectl get services --all-namespaces
